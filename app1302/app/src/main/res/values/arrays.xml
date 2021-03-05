@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mobile">
+        <item>Application</item>
+        <item>Activity</item>
+        <item>Intent</item>
+        <item>Layout</item>
+        <item>Linear</item>
+        <item>Relative</item>
+        <item>Absolute</item>
+        <item>Life Cycle</item>
+        <item>Inflation</item>
+        <item>View</item>
+        <item>Permission</item>
+        <item>Widget</item>
+        <item>Preference</item>
+        <item>Broadcast</item>
+        <item>Fragment</item>
+        <item>Drawable</item>
+    </string-array>
+</resources>
