@@ -30,15 +30,16 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        /* 클릭 리스너 방식
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String str = edit.getText().toString();
                 text.setText(str);
+                Toast.makeText(MainActivity.this, "클릭", Toast.LENGTH_SHORT).show();
             }
         });
-        */
+
 
         // implements View.OnClickListener 방식
         // btn.setOnClickListener(this);
@@ -56,9 +57,9 @@ public class MainActivity extends AppCompatActivity
     */
 
     // XML onClick 속성 방식
-    /*
+/*
     public void OnBtnClickHandler(View view) {
         Toast.makeText(this, "클릭", Toast.LENGTH_LONG).show();
     }
-    */
+*/
 }
