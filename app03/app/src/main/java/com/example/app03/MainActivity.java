@@ -28,9 +28,6 @@ public class MainActivity extends AppCompatActivity
         edit = findViewById(R.id.edit);
         btn = findViewById(R.id.btn);
 
-
-
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,7 +36,6 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "클릭", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         // implements View.OnClickListener 방식
         // btn.setOnClickListener(this);
