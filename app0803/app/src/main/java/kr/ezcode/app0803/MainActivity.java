@@ -20,13 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
         mPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
         mDing = mPool.load(this,R.raw.bgm, 1);
+
         mAm = (AudioManager) getSystemService(AUDIO_SERVICE);
 
         findViewById(R.id.beep1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mPool.play(mDing,1,1,0,0,1);
-
             }
         });
 

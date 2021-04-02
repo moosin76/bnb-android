@@ -52,7 +52,7 @@ public class CanvasEx3 extends View {
         pnt.setStyle(Paint.Style.STROKE);
         canvas.drawCircle(120, 250, 30, pnt);
 
-        pnt.setStyle(Paint.Style.FILL);
+        pnt.setStyle(Paint.Style.FILL_AND_STROKE);
         canvas.drawCircle(200, 250, 30, pnt);
 
         // 노란색 채우고 초록생 외각선

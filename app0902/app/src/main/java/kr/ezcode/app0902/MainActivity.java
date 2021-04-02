@@ -16,9 +16,22 @@ public class MainActivity extends AppCompatActivity {
         View vw = new View(this);
 
         TouchListenerClass touchListener = new TouchListenerClass();
+        LongClickListener longClickListener = new LongClickListener();
 
         vw.setOnTouchListener(touchListener); // 리스너 등록
+        vw.setOnLongClickListener(longClickListener); //
         setContentView(vw);
+    }
+
+    public class LongClickListener implements View.OnLongClickListener {
+        @Override
+        public boolean onLongClick(View v) {
+            Toast.makeText(
+                    MainActivity.this,
+                    "롱클릭 됬음",
+                    Toast.LENGTH_LONG).show();
+            return true;
+        }
     }
 
     public class TouchListenerClass implements View.OnTouchListener {
@@ -26,9 +39,11 @@ public class MainActivity extends AppCompatActivity {
         public boolean onTouch(View v, MotionEvent event) {
             if(event.getAction() == MotionEvent.ACTION_DOWN) {
                 Toast.makeText(MainActivity.this, "Touch Event Received!", Toast.LENGTH_SHORT).show();
-                return true;
+                return false;
             }
             return false;
         }
     }
+
+
 }

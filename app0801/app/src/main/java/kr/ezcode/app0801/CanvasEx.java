@@ -28,7 +28,7 @@ public class CanvasEx extends View {
         canvas.drawCircle(80,80,50, pnt); // 원그리기
 
         pnt.setColor(Color.GREEN); // 녹색 선택
-        pnt.setTextSize(5-0);
+        pnt.setTextSize(50);
         canvas.drawText("Canvas Text Finish", 100, 100, pnt); // 문자열 그리기
 
     }
