@@ -20,6 +20,13 @@ public class MainActivity extends AppCompatActivity {
         mHandler.sendEmptyMessage(0); // 핸들러에 빈 메세지를 보냄
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+
+
     // 핸들러 생성
     Handler mHandler = new Handler() {
         // 핸들러에 메세지가 보내졌을때 실행되는 메소드

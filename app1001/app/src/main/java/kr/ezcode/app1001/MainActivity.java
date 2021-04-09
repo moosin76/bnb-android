@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
                         "No. 1 Listener : Touch Event Received",
                         Toast.LENGTH_SHORT
                     ).show();
-                   // return true;
+                    return true;
                 }
                 return false;
             }
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                         "No. 2 Listener : Touch Event Received",
                         Toast.LENGTH_SHORT
                 ).show();
-              //  return true;
+                return true;
             }
             return false;
         }
