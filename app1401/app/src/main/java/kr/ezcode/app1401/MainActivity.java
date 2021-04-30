@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 new AlertDialog.Builder(MainActivity.this)
                     .setTitle("알림")
                     .setMessage("사용자에게 보내는 메세지")
-                    .setIcon(R.mipmap.ic_launcher)
+//                    .setIcon(R.mipmap.ic_launcher)
                     .setPositiveButton("긍정", new DialogInterface.OnClickListener(){
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -36,12 +36,13 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "부정", Toast.LENGTH_SHORT).show();
                         }
                     })
-                    .setNeutralButton("중립", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(MainActivity.this, "중립", Toast.LENGTH_SHORT).show();
-                        }
-                    })
+//                    .setNeutralButton("중립", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            Toast.makeText(MainActivity.this, "중립", Toast.LENGTH_SHORT).show();
+//                        }
+//                    })
+                    .setCancelable(false)
                     .show();
                 //AlertDialog dialog = builder.create();
                 //dialog.show();
@@ -53,12 +54,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("단순 다이얼로그");
-                builder.setMessage("닫거 버튼 한개만 있음");
-                builder.setNegativeButton("close", null);
-                builder.setCancelable(false);
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                builder.setTitle("단순 다이얼로그")
+                    .setMessage("닫거 버튼 한개만 있음")
+                    .setNegativeButton("close", null);
+                builder.setCancelable(false).show();
+//                AlertDialog dialog = builder.create();
+//                dialog.show();
             }
         });
     }

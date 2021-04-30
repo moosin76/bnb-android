@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         arGeneral.add("ORANGE");
         arGeneral.add("MANGO");
 
+
         // 아답터 생성
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
             this,

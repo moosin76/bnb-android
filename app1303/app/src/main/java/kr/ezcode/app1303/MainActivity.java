@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         );
         ListView list = findViewById(R.id.list);
         list.setAdapter(adapter);
-        list.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        list.setDivider(new ColorDrawable(Color.BLUE));
-        list.setDividerHeight(5);
+        list.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        list.setDivider(new ColorDrawable(Color.GRAY));
+        list.setDividerHeight(10);
     }
 }

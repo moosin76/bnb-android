@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         adspin = ArrayAdapter.createFromResource(
             this,
             R.array.colors,
-            android.R.layout.simple_spinner_dropdown_item
+            android.R.layout.simple_spinner_item
         );
 
         adspin.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -34,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, adspin.getItem(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,
+                        adspin.getItem(position),
+                        Toast.LENGTH_SHORT
+                ).show();
             }
 
             @Override
