@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             Thread.sleep(500); // 0.5초 멈춤
             boolean errorOccur = true; // 에러가 발생햇다고 가정
+            // 서버에 요청 오는 시간 .... 그 결과가 에러가 났다라고 가정
 
             if(errorOccur) {
                 new AlertDialog.Builder(this)
@@ -28,26 +29,28 @@ public class MainActivity extends AppCompatActivity {
                     .setMessage("There is insufficient memory to continue This program will exit.")
                     .setPositiveButton("Exit", null)
                     .show();
+
                 finish();
             }
             Toast.makeText(this, "The program was completed", Toast.LENGTH_LONG).show();
 
-            /* // 정상적인 흐름의 코드
-            if(errorOccur) {
-                new AlertDialog.Builder(this)
-                    .setTitle("Error")
-                    .setMessage("There is insufficient memory to continue This program will exit.")
-                    .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    })
-                    .show();
-            } else {
-                Toast.makeText(this, "The program was completed", Toast.LENGTH_LONG).show();
-            }
-            */
+            // 정상적인 흐름의 코드
+//            if(errorOccur) {
+//                new AlertDialog.Builder(this)
+//                    .setTitle("Error")
+//                    .setMessage("There is insufficient memory to continue This program will exit.")
+//                    .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            finish();
+//                        }
+//                    })
+//                    .show();
+//                // 그냥 실행된다.
+//            } else {
+//                Toast.makeText(this, "The program was completed", Toast.LENGTH_LONG).show();
+//            }
+
         }catch (Exception e) {
 
         }

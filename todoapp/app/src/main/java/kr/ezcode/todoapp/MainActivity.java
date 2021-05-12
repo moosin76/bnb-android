@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         String task = taskEdit.getText().toString();
                         SQLiteDatabase db = dbHelper.getWritableDatabase();
+                        /*
+                        INSERT INTO tasks (title, complete) VALUES (task, 0);
+                        * */
                         ContentValues values = new ContentValues();
                         values.put(DatabaseHelper.TaskEntry._TITLE, task);
                         values.put(DatabaseHelper.TaskEntry._CHECK, 0);
@@ -64,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }).setNegativeButton("Cancle", null);
                 builder.create().show();
-
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -73,8 +75,11 @@ public class MainActivity extends AppCompatActivity {
 
     // UI를 새로 고침
     public void updateUI() {
-        ArrayList<TodoItem> taskList = new ArrayList<>();
+        ArrayList<TodoItem> taskList = new ArrayList<>(); // 데이타
         SQLiteDatabase db = dbHelper.getReadableDatabase();
+        /*
+        SELECT * FROM tasks ORDER BY complete ASC;
+        * */
         Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TaskEntry.TABLE +
                 " ORDER BY " + DatabaseHelper.TaskEntry._CHECK + " ASC ",null);
         while (cursor.moveToNext()) {

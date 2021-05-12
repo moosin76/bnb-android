@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingHorizontal="8dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="28sp"
+        android:text="할일내용"/>
+
+    <ImageButton
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/check"
+        android:background="#00000000"
+        android:tint="#2196F3"
+        android:adjustViewBounds="true"
+        android:maxHeight="38dp"
+        android:layout_marginLeft="8dp"
+        />
+
+    <ImageButton
+        android:id="@+id/remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/delete"
+        android:background="#00000000"
+        android:tint="#99ff0000"
+        android:adjustViewBounds="true"
+        android:maxHeight="38dp"
+        android:layout_marginLeft="8dp"
+        />
+</LinearLayout>

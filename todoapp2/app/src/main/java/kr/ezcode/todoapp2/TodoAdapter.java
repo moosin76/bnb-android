@@ -1,11 +1,9 @@
-package kr.ezcode.todoapp;
-
+package kr.ezcode.todoapp2;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +15,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class TodoAdapter extends BaseAdapter {
-    public static String TAG = "MYAPP";
-    private Context ctx;
-    private ArrayList<TodoItem> todoList;
-    private DatabaseHelper dbHelper;
+    Context ctx;
+    ArrayList<TodoItem> todoList;
+    DatabaseHelper dbHelper;
 
-    public TodoAdapter(Context context, ArrayList<TodoItem> todoList, DatabaseHelper dbHelper) {
-        this.ctx = context;
+    public TodoAdapter(Context ctx, ArrayList<TodoItem> todoList, DatabaseHelper dbHelper) {
+        this.ctx = ctx;
         this.todoList = todoList;
         this.dbHelper = dbHelper;
     }
@@ -53,68 +50,59 @@ public class TodoAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TodoItem item = getItem(position);
 
         LayoutInflater inflater = LayoutInflater.from(ctx);
         View view = inflater.inflate(R.layout.todo_item, null);
 
         TextView title = view.findViewById(R.id.title);
-        ImageButton check = view.findViewById(R.id.check);
+        ImageButton checked = view.findViewById(R.id.check);
         ImageButton remove = view.findViewById(R.id.remove);
 
-        title.setText(item.getTitle());
+        TodoItem item = getItem(position);
 
-        if(item.getCheck() == 1) { // 완료된 목록
-            check.setColorFilter(Color.LTGRAY);
+        title.setText(item.getTitle());
+        if(item.getChecked() == 1) { // 완료된 상태
+            title.setTextColor(Color.LTGRAY); // 텍스트 색상 흐리게
+            checked.setColorFilter(Color.LTGRAY); // 체크버튼 색상 흐리게
+            // 텍스트 가운데 줄 쫘~
             title.setPaintFlags(title.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            title.setTextColor(Color.LTGRAY);
+            // 삭제 하는거
             remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    itemRemove(item);
+                    removeItem(item); // 삭제
                 }
             });
-        } else {
-            remove.setColorFilter(Color.LTGRAY);
+        } else { // 완료된 상태
+            remove.setColorFilter(Color.LTGRAY); // 삭제버튼 흐리게
         }
 
-        check.setOnClickListener(new View.OnClickListener() {
+        checked.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                itemCheck(item);
+                updateItem(item); // 체크를 변경하는거
             }
         });
         return view;
     }
 
-    void itemCheck(TodoItem item) {
-        int complete = item.getCheck() == 0 ? 1 : 0;
-        String msg = item.getTitle() + (complete == 1 ? " 완료" : " 미완료") + " 처리 하였습니다.";
+    void updateItem(TodoItem item) {
+        int checked = item.getChecked() == 0 ? 1 : 0;
+        String msg = item.getTitle() + (checked==1 ? " 완료" : " 미완료")  + " 하였습니다.";
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        /**
-         UPDATE tasks SET complete=1 WHERE _id=2
-         */
-        String sql = "UPDATE " + DatabaseHelper.TaskEntry.TABLE
-                + " SET " + DatabaseHelper.TaskEntry._CHECK + "=" + complete
-                + " WHERE " + DatabaseHelper.TaskEntry._ID + "=" + item.getId();
-        Log.d(TAG, sql);
+        String sql = "UPDATE tasks SET checked=" + checked +
+                " WHERE id=" + item.getId();
         db.execSQL(sql);
         db.close();
-
         Toast.makeText(ctx, msg, Toast.LENGTH_SHORT).show();
-        ((MainActivity)ctx).updateUI();
+        ((MainActivity)ctx).updateUI(); // 화면 갱신
     }
 
-    void itemRemove(TodoItem item) {
+    void removeItem(TodoItem item) {
         String msg = item.getTitle() + " 삭제하였습니다.";
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        /*
-        DELETE FROM tasks WHERE _id=1
-        * */
-        String sql = "DELETE FROM " + DatabaseHelper.TaskEntry.TABLE
-                + " WHERE " + DatabaseHelper.TaskEntry._ID + "=" + item.getId();
-        Log.d(TAG, sql);
+        String sql = "DELETE FROM tasks WHERE id=" + item.getId();
         db.execSQL(sql);
         db.close();
         Toast.makeText(ctx, msg, Toast.LENGTH_SHORT).show();

@@ -23,6 +23,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        /*
+        CRATE TABLE tasks (
+            _id INTEGER INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            complete INTEGER NOT NULL,
+        )
+        * */
         String createTable = "CREATE TABLE " + TaskEntry.TABLE + "( " +
                 TaskEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 TaskEntry._TITLE + " TEXT NOT NULL, " +
